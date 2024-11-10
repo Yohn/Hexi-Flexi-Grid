@@ -1,0 +1,74 @@
+// _hex_style.scss
+
+//--- IMPORT ---------------------------------//
+@use 'hexi-flexi-grid';
+
+/**
+	To move them up, and have a circle you gotta do:
+	#hexGrid .hexGrid {
+		margin-top: -3em;
+	}
+	the <a> tags are just for an example
+	<div id="hexGrid">
+		<div class="hexCrop">
+			<div class="hexGrid">
+				<div class="c-1 r-1"></div>
+				<a href="#c-2_r-1" class="c-2 r-1 hex"></a>
+				<div class="c-3 r-1"></div>
+				<a href="#c-1_r-2" class="c-1 r-2 hex"></a>
+				<a href="#c-2_r-2" class="c-2 r-2 hex"></a>
+				<a href="#c-3_r-2" class="c-3 r-2 hex"></a>
+				<a href="#c-1_r-3" class="c-1 r-3 hex"></a>
+				<a href="#c-2_r-3" class="c-2 r-3 hex"></a>
+				<a href="#c-3_r-3" class="c-3 r-3 hex"></a>
+			</div>
+		</div>
+	</div>
+
+*/
+
+//--- TEMPLATE -------------------------------//
+#hexGrid {
+	//--- SETTINGS -------------- VALUES ---------//
+	$gridWidth: 20em; // 'auto',(px,pt,r/em,vw/h)
+	$gridHeight: auto; // 'auto',(px,pt,r/em,vw/h)
+	$columnCount: 3; // 'auto',(number)
+	$rowCount: 3; // 'auto',(number)
+	$hexCount: auto; // 'auto',(number)
+	$hexLayout: row; // 'row','column','strict'
+	$gridOrient: vertical; // 'vertical','horizontal'
+	$crop: none; // 'none','crop'
+	$cropFactor: 1; // (number)
+	$hexContent: auto; // 'auto','center'
+	$hexSize: auto; // 'auto',(px,pt,r/em,vw/h)
+	$hexMargin: 0.5em; // (px,pt,r/em,vw/h)
+	$hexShape: hexagon; // 'hexagon','circle'
+	$hexColor: #48a999; // hexcode,rgb/a,named
+	$images:
+		'none'
+		'https://cdn.stocksnap.io/img-thumbs/960w/autumn-pumpkin_JDKQZCU919.jpg'
+		'none'
+		'https://cdn.stocksnap.io/img-thumbs/960w/autumn-pumpkin_JDKQZCU919.jpg'
+		'https://cdn.stocksnap.io/img-thumbs/960w/autumn-pumpkin_JDKQZCU919.jpg'
+		'https://cdn.stocksnap.io/img-thumbs/960w/autumn-pumpkin_JDKQZCU919.jpg'
+		'https://cdn.stocksnap.io/img-thumbs/960w/autumn-pumpkin_JDKQZCU919.jpg'
+		'https://cdn.stocksnap.io/img-thumbs/960w/autumn-pumpkin_JDKQZCU919.jpg'
+		'https://cdn.stocksnap.io/img-thumbs/960w/autumn-pumpkin_JDKQZCU919.jpg'
+	;
+
+	//--- MIXINS ---------------------------------//
+	@include hexi-flexi-grid.hexWrapper($gridWidth, $gridHeight, $gridOrient, $rowCount, $columnCount);
+
+	.hexCrop {
+		@include hexi-flexi-grid.hexCrop($crop, $cropFactor);
+	}
+
+	.hexGrid {
+		@include hexi-flexi-grid.hexContainer($gridWidth, $gridHeight, $gridOrient, $columnCount, $images, $rowCount, $hexLayout, $hexContent, $hexShape, $hexColor, $hexMargin, $hexCount, $hexSize);
+	}
+
+	//--- CUSTOM STYLES --------------------------//
+
+
+	//--------------------------------------------//
+}
