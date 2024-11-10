@@ -4,6 +4,13 @@
 
 Hexi-Flexi Grid is an SCSS component, built on the CSS Grid layout, that creates a hexagonal lattice. The mixin includes a number of customizeable settings to control the size, layout and look of the hex grid.
 
+## What I (Yohn) updated.
+
+ - I removed the need for a style.scss file since it just imported the hex-style.scss file
+ - Updated the the sass files to be compatible with the newest version of sass.
+   - The scss files can now be compiled with no errors or warnings
+ - [Updated Demo](https://codepen.io/Yohn/pen/mdNabMg)
+
 ## Features
 - Pure CSS styling, no JavaScript
 - Flexible height, width, column and row counts
@@ -76,9 +83,9 @@ If there will be multiple unique hex grids, duplicate this code block for each u
 
 ### Customization
 The grid can be assigned custom css from inside the `hex-style` codeblock.
-Hexi-Flexi Grid assigns unique class names to each individual column, row and cell in the hex grid. 
-- `.c-[n]` targets every cell in column [n]. 
-- `.r-[n]` targets every cell in row [n]. 
+Hexi-Flexi Grid assigns unique class names to each individual column, row and cell in the hex grid.
+- `.c-[n]` targets every cell in column [n].
+- `.r-[n]` targets every cell in row [n].
 - `.c-[n1].r-[n2]` targets the cell located at column [n1], row [n2].
 
 ```
