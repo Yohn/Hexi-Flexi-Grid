@@ -1,3 +1,4 @@
+
 @use "sass:list";
 @use "sass:math";
 //----- FUNCTIONS --------------//
@@ -148,51 +149,51 @@
 	display: grid;
 	justify-items: $hexContent;
 	align-items: $hexContent;
-
+	
 	@if $rowCount ==auto {
 		$l: math.ceil(math.div($hexCount, $columnCount)
 		);
-	$rowCount: $l;
-}
-
-@else if $columnCount ==auto {
-	$l: math.ceil(math.div($hexCount, $rowCount));
-	$columnCount: $l;
-}
-
-@else if $hexCount ==auto {
-	$hexCount: $rowCount * $columnCount;
-}
-
-@if $gridOrient ==horizontal {
-	@if $gridHeight ==auto {
-		$gridHeight: hGridHeight($gridWidth, $rowCount, $columnCount)
+		$rowCount: $l;
 	}
 
-	@else if $gridWidth ==auto {
-		$gridWidth: hGridWidth($gridHeight, $rowCount, $columnCount)
-	}
-}
-
-@else if $gridOrient ==vertical {
-	@if $gridHeight ==auto {
-		$gridHeight: vGridHeight($gridWidth, $rowCount, $columnCount)
+	@else if $columnCount ==auto {
+		$l: math.ceil(math.div($hexCount, $rowCount));
+		$columnCount: $l;
 	}
 
-	@else if $gridWidth ==auto {
-		$gridWidth: vGridWidth($gridHeight, $rowCount, $columnCount)
+	@else if $hexCount ==auto {
+		$hexCount: $rowCount * $columnCount;
 	}
-}
 
-height: $gridHeight;
-width: $gridWidth;
-@include gridTemplate($gridOrient, $columnCount, $rowCount, $gridWidth, $hexCount);
-@include layout($columnCount, $rowCount, $hexLayout, $gridOrient, $hexCount);
-@include imageAssigner($images, $hexCount, $hexLayout);
+	@if $gridOrient ==horizontal {
+		@if $gridHeight ==auto {
+			$gridHeight: hGridHeight($gridWidth, $rowCount, $columnCount)
+		}
 
-.hex {
-	@include hexStyle($hexShape, $gridOrient, $hexContent, $hexColor, $hexMargin, $hexSize);
-}
+		@else if $gridWidth ==auto {
+			$gridWidth: hGridWidth($gridHeight, $rowCount, $columnCount)
+		}
+	}
+
+	@else if $gridOrient ==vertical {
+		@if $gridHeight ==auto {
+			$gridHeight: vGridHeight($gridWidth, $rowCount, $columnCount)
+		}
+
+		@else if $gridWidth ==auto {
+			$gridWidth: vGridWidth($gridHeight, $rowCount, $columnCount)
+		}
+	}
+
+	height: $gridHeight;
+	width: $gridWidth;
+	@include gridTemplate($gridOrient, $columnCount, $rowCount, $gridWidth, $hexCount);
+	@include layout($columnCount, $rowCount, $hexLayout, $gridOrient, $hexCount);
+	@include imageAssigner($images, $hexCount, $hexLayout);
+
+	.hex {
+		@include hexStyle($hexShape, $gridOrient, $hexContent, $hexColor, $hexMargin, $hexSize);
+	}
 }
 
 @mixin gridTemplate($gridOrient, $columnCount, $rowCount, $gridWidth, $hexCount) {
